@@ -1,0 +1,582 @@
+/* ============================================================
+   ZÁKLADNÍ STYLY Z HLAVNÍHO WEBU (ZACHOVÁNÍ DESIGNU)
+   ============================================================ */
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Manrope', Arial, Helvetica, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* NAVIGATION / MENU */
+.menu {
+  top: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(
+    90deg,
+    rgb(255, 255, 255),
+    rgba(235, 254, 255, 0.736)
+  );
+  border-bottom: 5px solid rgba(0, 66, 81, 0.056);
+  height: fit-content;
+  width: 100%;
+  z-index: 999;
+}
+
+.navbar {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  height: 100%;
+  align-items: center;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  transition: transform 0.25s linear;
+  object-fit: contain;
+}
+
+.logo:hover {
+  animation: spin 0.25s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-placeholder {
+  align-self: center;
+  justify-self: center;
+  margin: 10px;
+  padding: 10px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  font-weight: 400;
+  color: rgb(0, 0, 0) !important;
+  display: inline-block;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.logo-placeholder:hover {
+  animation: chaos 0.4s infinite alternate ease-in-out;
+}
+
+@keyframes chaos {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(3deg) scale(1.05) translateX(2px); }
+  50% { transform: rotate(-3deg) scale(1.02) translateX(-2px); }
+  75% { transform: rotate(2deg) scale(1.06) translateY(2px); }
+  100% { transform: rotate(-2deg) scale(1.04) translateY(-2px); }
+}
+
+.menu-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+  padding-right: 2vw;
+  width: 100%;
+}
+
+.menu-item {
+  position: relative;
+  margin: 10px;
+  padding: 10px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  font-weight: 300;
+  color: rgb(0, 0, 0) !important;
+  text-decoration: none;
+}
+
+.menu-item::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: black;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.menu-item:hover::after {
+  width: 100%;
+}
+
+.menu-item:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.horizontal-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+/* MAIN CONTENT LAYOUT */
+.content {
+  padding-top: 130px;
+  padding-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ============================================================
+   SEKCE A KARTY UDÁLOSTÍ (PODLOUHLÉ OBDÉLNÍKOVÉ ŠABLONY)
+   ============================================================ */
+
+.events-section {
+  width: 85vw;
+  max-width: 1200px;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: rgb(0, 66, 81);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 100%;
+}
+
+/* KARTA UDÁLOSTI (PODLOUHLÝ OBDÉLNÍK PODLE NÁVRHU) */
+.event-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 66, 81, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* OBRÁZEK NAHOŘE (MODRÁ PLOCHA Z NÁVRHU) */
+.event-image-wrapper {
+  width: 100%;
+  height: 280px;
+  background-color: #4a777a; /* Mírně tlumené modré pozadí pro záložní účely */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* SPODNÍ PÁS S INFORMACEMI (NÁZEV, POPIS, DATUM, TLAČÍTKO) */
+.event-details-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  background: #ffffff;
+  gap: 20px;
+  border-top: 1px solid rgba(0, 44, 111, 0.1);
+}
+
+.event-title {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  flex: 1.2;
+  min-width: 180px;
+}
+
+.event-description {
+  flex: 2;
+  padding: 0 10px;
+}
+
+.event-description p {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+  font-size: 1.05rem;
+  color: #444444;
+  margin: 0;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.event-date {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: rgb(0, 44, 111);
+  text-align: center;
+  min-width: 140px;
+  letter-spacing: 0.03em;
+}
+
+.event-action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* ZLATÉ / ŽLUTÉ TLAČÍTKO PODLE NÁVRHU ("Více informací") */
+.button-event {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 12px 28px;
+  background-color: #fbc02d; /* Zlatá žluť z návrhu */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+  white-space: nowrap;
+  display: inline-block;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-event:hover {
+  background-color: #f57f17;
+  color: #ffffff;
+  transform: scale(1.02);
+}
+
+/* ============================================================
+   FOOTER (PATIČKA Z HLAVNÍHO WEBU)
+   ============================================================ */
+
+.footer {
+  width: 100%;
+  padding: 40px 0 20px;
+  background: #004251;
+  color: #e5e7eb;
+  font-family: system-ui, sans-serif;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-left h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.footer-left p {
+  margin: 6px 0 0;
+  opacity: 0.7;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: #4f9cff;
+  transform: translateX(3px);
+}
+
+.botnik {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+  display: block;
+  width: 100%;
+  padding: 16px 0 0 0;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================
+   RESPONZIVITA PRO MOBILY A TABLETY
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .event-details-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .event-title, .event-description, .event-date, .event-action {
+    width: 100%;
+    text-align: left;
+  }
+
+  .event-date {
+    font-size: 1.3rem;
+  }
+
+  .event-action {
+    justify-content: flex-start;
+  }
+
+  .button-event {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column !important;
+    position: relative !important;
+    height: auto !important;
+    padding: 10px 0 !important;
+    align-items: center !important;
+  }
+
+  .menu > a.horizontal-flex {
+    flex-direction: column !important;
+    margin-bottom: 5px !important;
+  }
+
+  .logo {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .logo-placeholder {
+    font-size: 1.1rem !important;
+    text-align: center !important;
+    margin: 5px 10px !important;
+  }
+
+  .menu-text {
+    width: 100% !important;
+    justify-content: center !important;
+    padding-right: 0 !important;
+  }
+
+  .menu-item {
+    font-size: 1rem !important;
+    margin: 5px 10px !important;
+  }
+
+  .content {
+    padding-top: 20px !important;
+  }
+
+  .events-section {
+    width: 92vw;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .event-image-wrapper {
+    height: 180px;
+  }
+}
+
+
+/* ============================================================
+   STYLY PRO DETAIL UDÁLOSTI (linuxdays2026.html / podstránky)
+   ============================================================ */
+
+.event-detail-container {
+  width: 70vw;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 66, 81, 0.12);
+  margin-bottom: 50px;
+}
+
+.event-detail-header-image {
+  width: 100%;
+  height: 350px;
+  background-color: #004251;
+  overflow: hidden;
+}
+
+.detail-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.event-detail-body {
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.event-detail-title {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: rgb(0, 66, 81);
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.event-detail-lead {
+  font-size: 1.25rem !important;
+  line-height: 1.6;
+  color: #1e293b;
+}
+
+.event-detail-body p {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #334155;
+  margin: 0;
+}
+
+/* BLOCK / BOX ROZCESTNÍKU PRO ZÁKLADNÍ INFORMACE */
+.info-box {
+  background-color: #f0f9ff;
+  border-left: 5px solid rgb(0, 66, 81);
+  padding: 25px 30px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.info-box h2 {
+  font-size: 1.5rem;
+  color: rgb(0, 66, 81);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-list li {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  color: #1e293b;
+}
+
+.info-list a {
+  color: #0284c7;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.info-list a:hover {
+  color: #0369a1;
+}
+
+.cta-callout {
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  color: rgb(0, 66, 81) !important;
+  margin-top: 15px !important;
+}
+
+.event-detail-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.event-detail-actions .button-17 {
+  width: auto;
+  text-decoration: none;
+  padding: 10px 30px;
+}
+
+/* RESPONZIVITA DETAILU UDÁLOSTI */
+@media (max-width: 900px) {
+  .event-detail-container {
+    width: 92vw;
+  }
+  .event-detail-body {
+    padding: 25px 20px;
+  }
+  .event-detail-title {
+    font-size: 1.8rem;
+  }
+  .event-detail-header-image {
+    height: 220px;
+  }
+}

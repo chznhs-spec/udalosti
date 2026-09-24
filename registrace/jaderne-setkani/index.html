@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrace – Jaderné setkání 2026</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <!-- Podlouhlý banner -->
+    <img src="js-banner.png" alt="Jaderné setkání 2026 banner" class="form-banner">
+
+    <div class="form-content">
+      <h2>Registrační formulář</h2>
+
+      <form id="registrationForm">
+        <div class="form-group">
+          <label for="jmeno">Jméno*</label>
+          <input type="text" id="jmeno" name="jmeno" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="prijmeni">Příjmení*</label>
+          <input type="text" id="prijmeni" name="prijmeni" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email*</label>
+          <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefon">Telefon</label>
+          <input type="tel" id="telefon" name="telefon" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="datumNarozeni">Datum narození*</label>
+          <input type="date" id="datumNarozeni" name="datumNarozeni" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="skola">Škola*</label>
+          <input type="text" id="skola" name="skola" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="kod">Zadejte přihlašovací kód - Pokud nemáte přihlašovací kód tak nechte prázdné:</label>
+          <input type="text" id="kod" name="kod" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="zkusenost">Setkali jste se někdy s studentskou iniciativou VLČR na akci v minulosti?*</label>
+          <select id="zkusenost" name="zkusenost" class="form-control" required>
+            <option value="">-- Vyberte možnost --</option>
+            <option value="Ano">Ano</option>
+            <option value="Ne">Ne</option>
+          </select>
+        </div>
+
+        <button type="submit" id="submitBtn" class="submit-btn">Odeslat přihlášku</button>
+
+        <div id="statusMessage"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // URL vašeho Google Apps Scriptu
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxAj4OVFXmyvYCJi0ePcfQu2N66noJINOPMza1rT5IgxUhAGOSiNeePvRRPb3Nd0FI9/exec";
+
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const statusDiv = document.getElementById('statusMessage');
+      const submitBtn = document.getElementById('submitBtn');
+      
+      submitBtn.disabled = true;
+      statusDiv.style.color = "#4a5568";
+      statusDiv.innerText = "Odesílám formulář...";
+
+      const formData = {
+        jmeno: document.getElementById('jmeno').value,
+        prijmeni: document.getElementById('prijmeni').value,
+        email: document.getElementById('email').value,
+        telefon: document.getElementById('telefon').value,
+        datumNarozeni: document.getElementById('datumNarozeni').value,
+        skola: document.getElementById('skola').value,
+        kod: document.getElementById('kod').value,
+        zkusenost: document.getElementById('zkusenost').value
+      };
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(() => {
+        statusDiv.style.color = "#2e7d32";
+        statusDiv.innerText = "Registrace byla odeslána! Na váš e-mail jsme poslali potvrzovací odkaz.";
+        document.getElementById('registrationForm').reset();
+        submitBtn.disabled = false;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        statusDiv.style.color = "#c53030";
+        statusDiv.innerText = "Při odesílání došlo k chybě. Zkuste to prosím znovu.";
+        submitBtn.disabled = false;
+      });
+  });
+  </script>
+
+</body>
+</html>

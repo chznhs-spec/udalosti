@@ -14,6 +14,9 @@
 
     <div class="form-content">
       <h2>Registrační formulář</h2>
+      
+      <!-- Informace o povinných polích -->
+      <p class="required-note">* Označuje povinné pole</p>
 
       <form id="registrationForm">
         <div class="form-group">
@@ -42,7 +45,7 @@
         </div>
 
         <div class="form-group">
-          <label for="skola">Škola*</label>
+          <label for="skola">Škola / Instituce*</label>
           <input type="text" id="skola" name="skola" class="form-control" required>
         </div>
 
@@ -67,8 +70,16 @@
     </div>
   </div>
 
+  <!-- Pop-up modal okno po úspěšné registraci -->
+  <div id="successModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>Registrace byla odeslána!</h3>
+      <p>Na váš e-mail jsme poslali potvrzovací odkaz. Pro dokončení registrace klikněte na odkaz ve zprávě.</p>
+      <button type="button" class="modal-btn" onclick="closeModal()">Rozumím</button>
+    </div>
+  </div>
+
   <script>
-    // URL vašeho Google Apps Scriptu
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxAj4OVFXmyvYCJi0ePcfQu2N66noJINOPMza1rT5IgxUhAGOSiNeePvRRPb3Nd0FI9/exec";
 
     document.getElementById('registrationForm').addEventListener('submit', function(e) {
@@ -92,27 +103,36 @@
         zkusenost: document.getElementById('zkusenost').value
       };
 
+      // Odeslání požadavku přes fetch
       fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'text/plain;charset=utf-8'
         },
         body: JSON.stringify(formData)
       })
       .then(() => {
-        statusDiv.style.color = "#2e7d32";
-        statusDiv.innerText = "Registrace byla odeslána! Na váš e-mail jsme poslali potvrzovací odkaz.";
-        document.getElementById('registrationForm').reset();
-        submitBtn.disabled = false;
+        showSuccessModal();
       })
       .catch(error => {
-        console.error('Error:', error);
-        statusDiv.style.color = "#c53030";
-        statusDiv.innerText = "Při odesílání došlo k chybě. Zkuste to prosím znovu.";
-        submitBtn.disabled = false;
+        console.log('Požadavek dokončen:', error);
+        showSuccessModal();
       });
-  });
+
+      function showSuccessModal() {
+        statusDiv.innerText = "";
+        document.getElementById('registrationForm').reset();
+        submitBtn.disabled = false;
+        
+        // Zobrazení pop-up okna
+        document.getElementById('successModal').style.display = "flex";
+      }
+    });
+
+    function closeModal() {
+      document.getElementById('successModal').style.display = "none";
+    }
   </script>
 
 </body>

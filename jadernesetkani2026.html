@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaderné setkání - Vzdělaný lid České republiky</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="jaderne-setkani.jpeg" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +19,7 @@
         }
 
         .js-logo-main {
-            max-width: 200px;
+            max-width: 160px;
             height: auto;
             margin-bottom: 15px;
         }
@@ -78,7 +77,33 @@
         .slider-btn.prev { left: 15px; }
         .slider-btn.next { right: 15px; }
 
-        /* Sekce Partnerů (Obrázková loga) */
+        /* Obecný blok o programu */
+        .program-overview-box {
+            background-color: #f8fafc;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .program-overview-box h2 {
+            color: #004251;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .program-overview-box p {
+            color: #334155;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .program-overview-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Sekce Partnerů (Obrázková loga s odkazy) */
         .partners-section {
             margin: 30px 0;
             text-align: center;
@@ -175,57 +200,30 @@
         .notify-box p {
             font-size: 1.1rem;
             color: #e2e8f0;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        .notify-form {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .notify-input {
-            padding: 12px 16px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 6px;
-            flex: 1;
-            font-family: inherit;
-        }
-
-        .notify-btn {
-            padding: 12px 24px;
-            font-size: 1rem;
+        .register-btn-main {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 1.1rem;
             font-weight: 700;
             background-color: #fbc02d;
             color: #1e293b;
             border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s ease;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        .notify-btn:hover {
+        .register-btn-main:hover {
             background-color: #f57f17;
-        }
-
-        .notify-btn:disabled {
-            background-color: #94a3b8;
-            cursor: not-allowed;
-        }
-
-        .form-status-msg {
-            margin-top: 15px;
-            font-weight: 600;
-            display: none;
+            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
             .slider-container { height: 220px; }
-            .notify-form { flex-direction: column; }
-            .notify-btn { width: 100%; }
         }
     </style>
 </head>
@@ -234,7 +232,7 @@
     <!-- NAVIGAČNÍ MENU / HEADER -->
     <header class="menu">
         <a href="index.html" class="horizontal-flex navbar">
-            <img src="logo_VLCR.png" alt="Logo VLČR" class="logo">
+            <img src="Logo_VLCR.png" alt="Logo VLČR" class="logo">
             <span class="logo-placeholder">Vzdělaný lid České republiky</span>
         </a>
         <div class="menu-text">
@@ -266,11 +264,11 @@
 
                 <!-- ÚVODNÍ POPISY -->
                 <p class="event-detail-lead">
-                    <strong>Jaderné setkání</strong> je konference a setkání mládeže a studentů se zájmem o jadernou fyziku, energetiku a pokročilé technologie.
+                    <strong>Jaderné setkání</strong> je neformální odborné setkání studentů, mládeže a nadšenců se zájmem o jadernou fyziku, energetiku a moderní technologie.
                 </p>
 
                 <p>
-                    Akce přináší unikátní prostor pro sdílení znalostí, diskuse o budoucnosti jaderné energetiky v České republice a osobní setkání s předními odborníky z praxe i akademické sféry.
+                    Akce přináší inspirativní prostředí pro setkání se zástupci z oboru, diskuse nad novými trendy v energetice i možnost navázání kontaktů s dalšími studenty.
                 </p>
 
                 <div class="separator-full"></div>
@@ -279,25 +277,25 @@
                 <div class="info-box">
                     <h2>Základní informace o akci</h2>
                     <ul class="info-list">
-                        <li><strong>Kdy:</strong> Bude upřesněno (Předpokládané datum: podzim 2026)</li>
-                        <li><strong>Kde:</strong> Praha, centrála skupiny ČEZ</li>
-                        <li><strong>Pro koho:</strong> Studenti středních a základních škol, nadšenci do jaderné fyziky</li>
-                        <li><strong>Vstupné:</strong> Zdarma (na základě předchozí registrace)</li>
+                        <li><strong>Kdy:</strong> 2. listopadu (Sraz v 8:30, zakončení cca ve 12:00 obědem)</li>
+                        <li><strong>Kde:</strong> Centrála skupiny ČEZ – Duhová 2/1444, Praha 4</li>
+                        <li><strong>Pro koho:</strong> Studenti středních a základních škol, mladí nadšenci do jádra a energetiky</li>
+                        <li><strong>Vstupné:</strong> Zdarma (podmíněno registrací z důvodu kapacity a vstupu do objektu)</li>
                     </ul>
                 </div>
 
-                <!-- PROGRAMOVÉ PILÍŘE -->
-                <section class="about-conference">
+                <!-- CO VÁS ČEKÁ (PLYNULÝ TEXT) -->
+                <section class="program-overview-box">
                     <h2>Na co se můžete těšit?</h2>
                     <p>
-                        Jaderné setkání nabízí unikátní pohled do akadermického prostředí a budoucnosti jaderné energetiky.
+                        Během dopoledne se zaměříme na stěžejní témata dnešní i budoucně orientované jaderné energetiky. Úvodní přednášku a diskusi na téma energie jako podstaty existence povede <strong>Josef Kaňkovský</strong>. 
                     </p>
-                    <ul style="line-height: 1.8; color: #334155; margin-top: 10px;">
-                        <li><strong>Odborné přednášky:</strong> Přednášky od odborníků v oblasti jaderné fyziky a energetiky.</li>
-                        <li><strong>Diskuze s odborníky:</strong> Setkat se s odborníky z praxe a akademické sféry.</li>
-                        <li><strong>Zdroj nové inspirace:</strong> Setkáte se s budoucností jaderné energetiky a počátky jaderné renesance.</li>
-                        <li><strong>Networking:</strong> Neformální prostor pro navázání kontaktů s odborníky a ostatními nadšenci.</li>
-                    </ul>
+                    <p>
+                        Solegyně a kolegové ze SMR týmu – <strong>Radana Šimůnková</strong> a <strong>Jakub Houdek</strong> – nás zasvětí do světa malých modulárních reaktorů a představí pokrok v této progresivní technologii. V rámci programu se k nám také rádi připojí kluci z týmu jaderných programátorů, kteří se podělí o své zkušenosti s vývojem středoškolského simulátoru blokové dozorny VVER 1000.
+                    </p>
+                    <p>
+                        Celé setkání uzavřeme společnou besedou o příležitostech a výzvách energetiky i vzdělávání v ČR a neformálním obědem, kde bude prostor pro další dotazy a diskuzi.
+                    </p>
                 </section>
 
                 <div class="separator-full"></div>
@@ -308,17 +306,17 @@
                     
                     <details class="faq-item">
                         <summary>Pro koho je akce primárně určena?</summary>
-                        <p>Jaderné setkání je otevřeno všem základoškolským i středoškolským studentům, kteří se chtějí dozvědět více o jaderné vědě a energetice.</p>
+                        <p>Jaderné setkání je otevřeno všem studentům základních a středních škol i dalším zájemcům o jadernou fyziku a energetiku.</p>
                     </details>
 
                     <details class="faq-item">
-                        <summary>Kolik stojí účast na konferenci?</summary>
-                        <p>Účast na akci je zcela zdarma díky podpoře partnerů a organizátorů. Je však nutné se předem zaregistrovat z důvodu omezené kapacity.</p>
+                        <summary>Kolik stojí účast na akci?</summary>
+                        <p>Účast je zdarma (včetně oběda pro účastníky). Podmínkou je včasná online registrace z důvodu omezené kapacity a bezpečnostních rules budovy ČEZ.</p>
                     </details>
 
                     <details class="faq-item">
-                        <summary>Kdy bude spuštěna oficiální registrace?</summary>
-                        <p>Registrace bude spuštěna přibližně 1 měsíc před konáním akce. Můžete níže zanechat svůj e-mail a my vám pošleme upozornění hned, jakmile přihlašování otevřeme.</p>
+                        <summary>Jak se na místo dostanu?</summary>
+                        <p>Sraz je na centrále ČEZ (Duhová 2/1444, Praha 4). Místo je dobře dostupné z metra C Budějovická nebo Pankrác.</p>
                     </details>
                 </section>
 
@@ -328,32 +326,29 @@
                     <p style="font-size: 0.95rem; color: #64748b;">Akce vzniká za podpory významných institucí a partnerů v oboru:</p>
 
                     <div class="partners-grid">
-    <a href="https://www.cez.cz" target="_blank" rel="noopener noreferrer">
-        <img src="organizace/cez.png" alt="ČEZ">
-    </a>
-    <a href="https://www.cvut.cz" target="_blank" rel="noopener noreferrer">
-        <img src="organizace/cvut.png" alt="ČVUT v Praze">
-    </a>
-    <a href="https://www.fjfi.cvut.cz" target="_blank" rel="noopener noreferrer">
-        <img src="organizace/fjfi.svg" alt="FJFI ČVUT">
-    </a>
-    </a>
-    <a href="https://kdejinde.cz" target="_blank" rel="noopener noreferrer">
-        <img src="organizace/kdejinde.png" alt="kdejinde.cz">
-    </a>
-</div>
+                        <a href="https://www.cez.cz" target="_blank" rel="noopener noreferrer">
+                            <img src="organizace/cez.png" alt="ČEZ">
+                        </a>
+                        <a href="https://www.cvut.cz" target="_blank" rel="noopener noreferrer">
+                            <img src="organizace/cvut.png" alt="ČVUT v Praze">
+                        </a>
+                        <a href="https://www.fjfi.cvut.cz" target="_blank" rel="noopener noreferrer">
+                            <img src="organizace/fjfi.svg" alt="FJFI ČVUT">
+                        </a>
+                        <a href="https://kdejinde.cz" target="_blank" rel="noopener noreferrer">
+                            <img src="organizace/kdejinde.png" alt="kdejinde.cz">
+                        </a>
+                    </div>
                 </section>
 
                 <!-- DOLNÍ FORMULÁŘ NA REGISTRACI -->
                 <div class="notify-box">
-                    <h2>Chcete být u spuštění registrace mezi prvními?</h2>
-                    <p>Zanechte nám na sebe e-mail a dáme vám vědět okamžitě, jakmile otevřeme přihlašování na nový ročník.</p>
+                    <h2>Registrace na Jaderné setkání je otevřena!</h2>
+                    <p>Místa jsou omezená. Zarezervujte si své místo na akci 2. listopadu v centrále ČEZ.</p>
                     
-                    <form class="notify-form" id="emailForm">
-                        <input type="email" id="userEmail" class="notify-input" placeholder="Váš e-mail..." required>
-                        <button type="submit" class="notify-btn" id="submitBtn">Upozornit mě</button>
-                    </form>
-                    <p id="formStatus" class="form-status-msg"></p>
+                    <a href="https://udalosti.vzdelanylid.cz/registrace/jaderne-setkani" class="register-btn-main">
+                        Zaregistrovat se na akci &rarr;
+                    </a>
                 </div>
 
             </div>
@@ -399,52 +394,6 @@
             currentSlide++;
             showSlide(currentSlide);
         }, 5000);
-
-        /* ODESLÁNÍ EMAILU DO GOOGLE SHEETS */
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxw36RrlFccQsdnSiSgax2lwYZdhB1rvcYvnSWSTkup0RXhtAFbyP6pYEd0J1szXdYNcA/exec';
-
-const emailForm = document.getElementById('emailForm');
-const submitBtn = document.getElementById('submitBtn');
-const formStatus = document.getElementById('formStatus');
-
-emailForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const emailInput = document.getElementById('userEmail').value;
-    
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Odesílám...';
-    formStatus.style.display = 'block';
-    formStatus.style.color = '#e2e8f0';
-    formStatus.textContent = 'Ukládám e-mail...';
-
-    // Formátování dat jako standardní formulářový požadavek
-    const formData = new URLSearchParams();
-    formData.append('email', emailInput);
-
-    fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formData.toString()
-    })
-    .then(() => {
-        formStatus.style.color = '#4ade80';
-        formStatus.textContent = 'Děkujeme! Váš e-mail byl úspěšně zaregistrován.';
-        emailForm.reset();
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Upozornit mě';
-    })
-    .catch(error => {
-        console.error('Chyba:', error);
-        formStatus.style.color = '#f87171';
-        formStatus.textContent = 'Došlo k chybě při ukládání. Zkuste to prosím znovu.';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Upozornit mě';
-    });
-});
     </script>
 
 </body>
